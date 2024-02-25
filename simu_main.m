@@ -36,7 +36,7 @@ parfor nn = 1:nsimu
     dg0 = dg(x*beta0);
     
     [fhat, f_support, hf, ally, betaest, gest, dgest, gest_inv] = ...
-        DSQRM_v2(x, v, m, tau_set, hx, hy, h, [], beta0, g0, dg0, false);
+        DSQRM(x, v, m, tau_set, hx, hy, h, [], beta0, g0, dg0, false);
     all_fhat(:,:,nn) = fhat;
     all_fsupp(:,:,nn) = f_support;
     all_hf(nn,:) = hf;

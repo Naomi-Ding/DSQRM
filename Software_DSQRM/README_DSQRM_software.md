@@ -7,14 +7,14 @@
 ## Framework
 <details>
   <summary> Workflow </summary>
-  ![Framework](workflow.png)
+  ![Framework](/workflow.png)
   
   Fig 1. The workflow of our proposed association analysis framework.
 </details>
 
 
 ## Software Interface
-![GUI](figures/interface.png)\
+![GUI](interface.png)\
 Fig 2. The interface of the software. 
 
 
@@ -148,6 +148,6 @@ The results will be saved in this folder by the name **"results.mat"**.
 
 
 ## Visualization of the Result
-![GUI](figures/interface_4.png)\
+![GUI](interface_example.png)\
 Fig 3. An example of the analysis on GBM dataset using the software.
 
