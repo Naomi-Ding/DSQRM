@@ -7,6 +7,7 @@
 ## Framework
 <details>
   <summary> Workflow </summary>
+  
   ![Framework](/workflow.png)
   
   Fig 1. The workflow of our proposed association analysis framework.
