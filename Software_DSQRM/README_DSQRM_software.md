@@ -27,9 +27,9 @@ Fig 2. The interface of the software.
 - **.mat file:** containing a variable named "xdesign", which is a table of size (n, p0), with the first column as the sample name, and the column names as the variable names;
   - **n**: sample size 
   - **p0**: the number of covariates
-- **.csv file:** the first column is the sample name, and the rest columns are the variables treated as the covariates of interests. \
-  > [!NOTE] 
-  > the continuous variables need to be normalized before being loaded.**
+- **.csv file:** the first column is the sample name, and the rest columns are the variables treated as the covariates of interests.
+> [!NOTE]
+> the continuous variables need to be normalized before being loaded.
 
 
 ### Images
