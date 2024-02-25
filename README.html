@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>DSQRM&colon; Distribution-on-scalar Single-index Quantile Regression Model for Handling Tumor Heterogeneity</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="dsqrm-distribution-on-scalar-single-index-quantile-regression-model-for-handling-tumor-heterogeneity">DSQRM: Distribution-on-scalar Single-index Quantile Regression Model for Handling Tumor Heterogeneity</h1>
+<h1 id="introduction">Introduction</h1>
+<h2 id="abstract">Abstract</h2>
+<p><strong>This paper develops a distribution-on-scalar single-index quantile regression modeling framework to investigate the relationship between cancer imaging responses and scalar covariates of interest while tackling tumor heterogeneity. Conventional association analysis methods typically assume that the imaging responses are well-aligned after some preprocessing steps. However, this assumption is often violated in practice due to imaging heterogeneity. Although some distribution-based approaches are developed to deal with this heterogeneity, major challenges have been posted due to the nonlinear subspace formed by the distributional responses, the unknown nonlinear association structure, and the lack of statistical inference. Our method can successfully address all the challenges. We establish both estimation and inference procedures for the unknown functions in our model. The asymptotic properties of both estimation and inference procedures are systematically investigated. The finite-sample performance of our proposed method is assessed by using both Monte Carlo simulations and a real data example on brain cancer images from TCIA-GBM collection.</strong></p>
+<h2 id="framework">Framework</h2>
+<p><img src="file:///d:\OneDrive - Florida State University\PhD\ELFR\REVISION_v2\code\finalversion_github\workflow.png" alt="Framework">
+Fig 1. The workflow of our proposed association analysis framework.</p>
+<h1 id="folder-structure">Folder Structure</h1>
+<ul>
+<li><strong><a href="./utilities/">./utilities/</a>:</strong>
+contains all the user-defined functions</li>
+<li><strong><a href="./simu_results/">./simu_results/</a>:</strong>
+<ul>
+<li>simu_n%d_N%d_m%d_p%d_nsimu%d.mat: the simulated dataset with density estimators &amp; LQD representations;</li>
+<li><a href="simu_results/simu_estimation_error.csv">simu_estimation_error.csv</a>: the mean &amp; std of ISE of estimated functions by our method and the competitors, SIVC (2016) &amp; PWSI</li>
+</ul>
+</li>
+<li><strong><a href="./Software_DSQRM/">./Software_DSQRM/</a></strong>
+<ul>
+<li><strong>./DSQRM_Installer_web.exe</strong>: the installation file for the software &quot;DSQRM&quot;
+<ul>
+<li>require MATLAB Runtime, which will automatically download during the installation</li>
+</ul>
+</li>
+<li><strong><a href="./Software_DSQRM/README_DSQRM_software.html">./README_DSQRM_software.md</a>:</strong> the specific usage of the software</li>
+<li><strong><a href="./Software_DSQRM/examples/">./examples/</a></strong>: contains the dataset and results for GBM study</li>
+</ul>
+</li>
+</ul>
+<h1 id="code-description">Code Description</h1>
+<h2 id="dsqrmm"><a href="DSQRM.m">DSQRM.m</a></h2>
+<blockquote>
+<p><strong>the main function of the workflow shown in Fig 1.</strong></p>
+</blockquote>
+<h3 id="input">Input:</h3>
+<ul>
+<li>x: A set of covariates of interest</li>
+<li>v: Brain tumor images with pixel intensities</li>
+<li>m: The number of grids for the measurement of density estimators extracted from the images</li>
+<li>tau_set: a set of targeted quantile levels</li>
+<li><mark>For other optional arguments</mark>, see the details in <a href="DSQRM.m">DSQRM.m</a></li>
+</ul>
+<h3 id="output">Output:</h3>
+<ul>
+<li>
+<p>fhat: estimated denstiies, (n, N)</p>
+</li>
+<li>
+<p>f_support: support of estimated densities, (n, N)</p>
+</li>
+<li>
+<p>hf: bandwidth for density estimators, (1, n)</p>
+</li>
+<li>
+<p>ally: LQD representation of fhat, (n, m)</p>
+</li>
+<li>
+<p>all_betaest: estimated functional coefficients at targeted quantile levels, (p,m,ntau)</p>
+</li>
+<li>
+<p>all_gest: estimated link function at target quantile levels, (n,m,ntau)</p>
+</li>
+<li>
+<p>all_dgest: estimated first derivative of the link function at target quantile levels, (n,m,ntau)</p>
+</li>
+<li>
+<p>all_gest_inv: the inversed transformation of estimated gest, (n,m,ntau)</p>
+</li>
+<li>
+<p><strong>Optional:</strong></p>
+<ul>
+<li>all_Cb_beta: simultaneous confidence bands for estimated coefficients beta_l(s), l=1,...,p; (p,ntau)</li>
+<li>all_Cr_beta: simultaneous confidence region for estimated coefficient functions beta(s), (1, ntau)</li>
+<li>all_Cb_g: simultaneous confidence band for estimated link function gest(\cdot), (1, ntau)</li>
+<li>all_pvals: p-values of the hypothesis testing procedures at the targeted quantile levels, (1, ntau)</li>
+</ul>
+</li>
+</ul>
+<h2 id="simu_mainm"><a href="simu_main.m">simu_main.m</a></h2>
+<blockquote>
+<p><strong>the function for calculating the estimation errors from simulated datasets measured by the mean and standard deviation (std) of ISE.</strong></p>
+</blockquote>
+<h3 id="1-settings">(1) Settings</h3>
+<blockquote>
+<p><strong>For different simulation settings, please modify the corresponding parameters.</strong></p>
+</blockquote>
+<ul>
+<li>n: sample size, choose from [100,200]</li>
+<li>p: number of covariates, p = 2</li>
+<li>m: number of grids for lqd functions, choose from [100,200]</li>
+<li>N: number of data points in each sample, choose from [500,1000]</li>
+<li>nsimu: number of simulated datasets, nsimu = 200</li>
+<li>tau_set: targeted quantile levels, (0.1, 0.3, 0.5, 0.7, 0.9)</li>
+<li>SIVC: logical value, true or false, whether to get estimators by SIVC (2016)</li>
+</ul>
+<h3 id="2-procedures">(2) Procedures</h3>
+<h4 id="step-1-generate-covariates--images-given-the-input-of-settings">Step 1. Generate covariates &amp; images given the input of settings;</h4>
+<h4 id="step-2-get-the-estimators-by-our-method-and-calculate-the-mean--std-of-integrated-squared-errors-ise-of-the-estimators">Step 2. Get the estimators by our method, and calculate the mean &amp; std of integrated squared errors (ISE) of the estimators;</h4>
+<pre><code>(i) Extract the density estimators &amp; LQD representations from the generated images;
+(ii) Get the estimators of the functional coefficients &amp; link function 
+given different quantile levels, (0.1, 0.3, 0.5, 0.7, 0.9);
+(iii) Calculate the mean &amp; std of ISE of the estimators and display the errors in a table.
+</code></pre>
+<h4 id="step-3-get-the-estimators-by-sivc-2016-based-on-extracted-lqd-representations-and-calculate-the-mean--std-of-ise-of-the-estimators">Step 3. Get the estimators by SIVC (2016) based on extracted LQD representations, and calculate the mean &amp; std of ISE of the estimators.</h4>
+<h3 id="3-an-example">(3) An example</h3>
+<blockquote>
+<p><strong>Settings: n=100, p=2, m=100, N=500, nsimu=200, tau_set= (0.1, 0.3, 0.5, 0.7, 0.9).</strong></p>
+</blockquote>
+<h4 id="i-our-method--sivc-2016">(i) Our method &amp; SIVC (2016)</h4>
+<p><strong>Run the command through MATLAB command prompt</strong></p>
+<pre><code class="language-ruby">[T_all, all_betaest, all_gest, all_dgest, all_gest_inv, ...
+	all_betaest_SIVC, all_gest_SIVC, all_gest_inv_SIVC] = ...
+	simu_main(<span class="hljs-number">100</span>, <span class="hljs-number">2</span>, <span class="hljs-number">100</span>, <span class="hljs-number">500</span>, <span class="hljs-number">200</span>, <span class="hljs-number">0.1</span><span class="hljs-symbol">:</span><span class="hljs-number">0.3</span><span class="hljs-symbol">:</span><span class="hljs-number">0.9</span>, <span class="hljs-literal">true</span>);
+</code></pre>
+<h4 id="ii-point-wise-single-index-pwsi-method">(ii) Point-wise Single-index (PWSI) method</h4>
+<p><strong>Run the R script &quot;simu_PWSI.R&quot; using the command line:</strong></p>
+<pre><code>Rscript simu_PWSI.R 100 2 100 500 200
+</code></pre>
+
+            
+            
+        </body>
+        </html>
