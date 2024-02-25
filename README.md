@@ -58,6 +58,7 @@ Fig 1. The workflow of our proposed association analysis framework.
 - N: number of data points in each sample, choose from [500,1000]
 - nsimu: number of simulated datasets, nsimu = 200
 - tau_set: targeted quantile levels, (0.1, 0.3, 0.5, 0.7, 0.9)
+- SIVC: logical value, true or false, whether to get estimators by SIVC (2016)
 
 ### (2) Procedures
 #### Step 1. Generate covariates & images given the input of settings;
@@ -73,8 +74,9 @@ Fig 1. The workflow of our proposed association analysis framework.
 #### (i) Our method & SIVC (2016)
 **Run the command through MATLAB command prompt**
 ```ruby
-[T_all, all_betaest, all_gest, all_gest_inv, all_betaest_SIVC, all_gest_SIVC, all_gest_inv_SIVC] = 
-	simu_main(100, 2, 100, 500, 200, 0.1:0.3:0.9);
+[T_all, all_betaest, all_gest, all_dgest, all_gest_inv, ...
+	all_betaest_SIVC, all_gest_SIVC, all_gest_inv_SIVC] = ...
+	simu_main(100, 2, 100, 500, 200, 0.1:0.3:0.9, true);
 ```
 #### (ii) Point-wise Single-index (PWSI) method
 **Run the R script "simu_PWSI.R" using the command line:**
