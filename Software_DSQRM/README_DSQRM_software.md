@@ -7,7 +7,7 @@
 ## Framework
 <details>
   <summary> Workflow </summary>
-  ![Framework](../workflow.png)
+  ![Framework](/workflow.png)
   
   Fig 1. The workflow of our proposed association analysis framework.
 </details>
@@ -28,7 +28,7 @@ Fig 2. The interface of the software.
   - **p0**: the number of covariates
 - **.csv file:** the first column is the sample name, and the rest columns are the variables treated as the covariates of interests. \
   > [!NOTE] 
-  > the continuous variables need to be normalized before being loaded.**
+  > the continuous variables need to be normalized before being loaded.
 
 
 ### Images
@@ -59,7 +59,8 @@ Fig 2. The interface of the software.
 <summary> <mark>Optional Input</mark> </summary>
 
 #### Initials
-> Click the button **Initials** to choose a matlab data file (.mat) containing the initial values for **the functional coefficients** $\beta(s)$ and **the link function** $g(\cdot)$ and its **first derivative** $\dot{g}(\cdot)$. \
+> Click the button **Initials** to choose a matlab data file (.mat) containing the initial values for **the functional coefficients** $\beta(s)$ and **the link function** $g(\cdot)$ and its **first derivative** $\dot{g}(\cdot)$. 
+
 The variable names should be
 - **beta0**: a matrix of size (p, m)
 - **g0**: a matrix of size (n, m)
@@ -125,25 +126,26 @@ The results will be saved in this folder by the name **"results.mat"**.
 - Number of Bootstrap: default = 200
 
 #### Simultaneous Confidence Bands (SCB)
-> Click the button to start the bootstrap procedure for constructing SCB for both functional coefficients and link function\
-> user can choose if to display the SCB together with the estimators by checking the box at the bottom of the right panel 
+> Click the button to start the bootstrap procedure for constructing SCB for both functional coefficients and link function
+
+user can choose if to display the SCB together with the estimators by checking the box at the bottom of the right panel 
 
 #### Hypothesis Test
 > Click the button to start the hypothesis test procedure for one of the functional coefficients
-> - idx: denotes to conduct the hypothesis test on which covariate
-> - p-value: the corresponding p-value after the bootstrap procedures
+- idx: denotes to conduct the hypothesis test on which covariate
+- p-value: the corresponding p-value after the bootstrap procedures
 
 
 # An Example of GBM Study
 ## Folder Structure
-> **examples/**: this folder contains both input files and output results of this example. \
+> **examples/**: this folder contains both input files and output results of this example. 
 
 ### - Input
-   1. **images & masks**: '/examples/TCGA_flair_single_slice'
-   2. **covariates of interest:** 'examples/TCGA_GBM_covariates.csv'
-   3. **initial values** for the functional coefficients & link function: 'examples/initials.mat'
+  1. **images & masks**: ['./examples/TCGA_flair_single_slice'](./examples/TCGA_flair_single_slice/)
+  2. **covariates of interest:** ['./examples/TCGA_GBM_covariates.csv'](./examples/TCGA_GBM_covariates.csv)
+  3. **initial values** for the functional coefficients & link function: ['./examples/initials.mat'](./examples/initials.mat)'examples/initials.mat'
 ### - Output
-  - saved in the matlab file "/examples/results.mat"
+  - saved in the matlab file ["./examples/results.mat"](./examples/results.mat)
    
 
 
