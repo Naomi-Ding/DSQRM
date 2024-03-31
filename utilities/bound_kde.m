@@ -11,10 +11,10 @@ function [f,t] = bound_kde(v, kernel, hf)
 % m = length(t);
 
 if isequal(kernel, 'ep')
-%     K = @(x,vi) kh((x - vi)/hf, 1);
+    %     K = @(x,vi) kh((x - vi)/hf, 1);
     K = @(u) 0.75 * (1-u.^2) .* (abs(u)<1);
 elseif isequal(kernel, 'gaussian')
-%     exp(-tmp(i)^2/2) / (2*pi * h);
+    %     exp(-tmp(i)^2/2) / (2*pi * h);
     K = @(u) exp(-u.^2/2) / sqrt(2*pi);
 end
 
@@ -24,12 +24,14 @@ end
 
 w = @(t, hf) kde_weight(t, kernel, hf); % 1 x N, weight function
 
-bound = max(v,[],2) + 0.001; % n x 1
+bound_u = max(v,[],2) + 0.001; % n x 1, upper bound
+bound_l = min(v,[],2) - 0.001; % n x 1, lower bound
 f = zeros(n,N);
 t = zeros(n,N);
 for i = 1:n
-%     i
-    ti = linspace(0, bound(i), N); % 1 x N, coordinates for density fi
+    %     i
+    %     ti = linspace(0, bound(i), N); % 1 x N, coordinates for density fi
+    ti = linspace(bound_l(i), bound_u(i), N); % 1 x N, coordinates for density fi
     Kw = K((ti - v(i,:)')/hf(i)) .* w(ti, hf(i)); % N x N
     kw0 = trapz(ti, Kw, 2); % N x 1, integral w.r.t. t
     f(i,:) = sum(Kw, 1) / sum(kw0);

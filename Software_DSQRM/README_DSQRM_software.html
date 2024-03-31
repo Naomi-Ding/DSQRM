@@ -11,7 +11,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 .vscode-dark img[src$=\#gh-light-mode-only],
-.vscode-light img[src$=\#gh-dark-mode-only] {
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
 	display: none;
 }
 
@@ -144,11 +146,11 @@
 <h2 id="framework">Framework</h2>
 <details>
   <summary> Workflow </summary>
-<p><img src="file:////workflow.png" alt="Framework"></p>
+  ![Framework](../workflow.png)
 <p>Fig 1. The workflow of our proposed association analysis framework.</p>
 </details>
 <h2 id="software-interface">Software Interface</h2>
-<p><img src="file:///d:\OneDrive - Florida State University\PhD\ELFR\REVISION_v2\code\finalversion_github\Software_DSQRM\interface.png" alt="GUI"><br>
+<p><img src="file:///d:\OneDrive - Florida State University\PhD\ELFR\REVISION_v2\code\DSQRM_Package_V1.0\Software_DSQRM\interface0.png" alt="GUI"><br>
 Fig 2. The interface of the software.</p>
 <h1 id="software-usage">Software Usage</h1>
 <h2 id="1-input-"><mark>1. Input </mark></h2>
@@ -212,9 +214,9 @@ Fig 2. The interface of the software.</p>
 <summary> <mark>Optional Input</mark> </summary>
 <h4 id="initials">Initials</h4>
 <blockquote>
-<p>Click the button <strong>Initials</strong> to choose a matlab data file (.mat) containing the initial values for <strong>the functional coefficients</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\beta(s)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span> and <strong>the link function</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mo>⋅</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(\cdot)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord">⋅</span><span class="mclose">)</span></span></span></span> and its <strong>first derivative</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>g</mi><mo>˙</mo></mover><mo stretchy="false">(</mo><mo>⋅</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\dot{g}(\cdot)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1111em;"><span class="mord">˙</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord">⋅</span><span class="mclose">)</span></span></span></span>.</p>
+<p>Click the button <strong>Initials</strong> to choose a matlab data file (.mat) containing the initial values for <strong>the functional coefficients</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\beta(s)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span> and <strong>the link function</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mo>⋅</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(\cdot)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord">⋅</span><span class="mclose">)</span></span></span></span> and its <strong>first derivative</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>g</mi><mo>˙</mo></mover><mo stretchy="false">(</mo><mo>⋅</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\dot{g}(\cdot)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1111em;"><span class="mord">˙</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord">⋅</span><span class="mclose">)</span></span></span></span>. <br>
+The variable names should be</p>
 </blockquote>
-<p>The variable names should be</p>
 <ul>
 <li><strong>beta0</strong>: a matrix of size (p, m)</li>
 <li><strong>g0</strong>: a matrix of size (n, m)</li>
@@ -225,16 +227,16 @@ Fig 2. The interface of the software.</p>
 <p>numerical values within (0,1), controlling the smoothness</p>
 </blockquote>
 <ul>
-<li>h1</li>
-<li>h2</li>
-<li>h3</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>β</mi></msub></mrow><annotation encoding="application/x-tex">h_\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05278em;">β</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>g</mi></msub></mrow><annotation encoding="application/x-tex">h_g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>η</mi></msub></mrow><annotation encoding="application/x-tex">h_\eta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">η</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></li>
 </ul>
 </details>
 <h3 id="output-folder">Output Folder</h3>
 <blockquote>
-<p>Click the button <strong>Output Folder</strong> to choose a folder where the extracted distributional representations &amp; the results of our model to be saved.</p>
+<p>Click the button <strong>Output Folder</strong> to choose a folder where the extracted distributional representations &amp; the results of our model to be saved. <br>
+The results will be saved in this folder by the name <strong>&quot;results.mat&quot;</strong>.</p>
 </blockquote>
-<p>The results will be saved in this folder by the name <strong>&quot;results.mat&quot;</strong>.</p>
 <h2 id="-3-extract-distributional-representation-"><mark> 3. Extract Distributional Representation </mark></h2>
 <blockquote>
 <p>Click the button <strong>Extract Distributional Representation</strong>, to have a visualization:</p>
@@ -294,33 +296,34 @@ Fig 2. The interface of the software.</p>
 </ul>
 <h4 id="simultaneous-confidence-bands-scb">Simultaneous Confidence Bands (SCB)</h4>
 <blockquote>
-<p>Click the button to start the bootstrap procedure for constructing SCB for both functional coefficients and link function</p>
+<p>Click the button to start the bootstrap procedure for constructing SCB for both functional coefficients and link function<br>
+user can choose if to display the SCB together with the estimators by checking the box at the bottom of the right panel</p>
 </blockquote>
-<p>user can choose if to display the SCB together with the estimators by checking the box at the bottom of the right panel</p>
 <h4 id="hypothesis-test">Hypothesis Test</h4>
 <blockquote>
 <p>Click the button to start the hypothesis test procedure for one of the functional coefficients</p>
-</blockquote>
 <ul>
 <li>idx: denotes to conduct the hypothesis test on which covariate</li>
 <li>p-value: the corresponding p-value after the bootstrap procedures</li>
 </ul>
+</blockquote>
 <h1 id="an-example-of-gbm-study">An Example of GBM Study</h1>
+<h2 id="folder-structure">Folder Structure</h2>
 <blockquote>
-<p><strong>examples</strong>: this folder contains both input files and output results of this example.</p>
+<p><strong>examples/</strong>: this folder contains both input files and output results of this example. \</p>
 </blockquote>
 <h3 id="--input">- Input</h3>
 <ol>
-<li><strong>images &amp; masks</strong>: <a href="./examples/TCGA_flair_single_slice/">'./examples/TCGA_flair_single_slice'</a></li>
-<li><strong>covariates of interest:</strong> <a href="./examples/TCGA_GBM_covariates.csv">'./examples/TCGA_GBM_covariates.csv'</a></li>
-<li><strong>initial values</strong> for the functional coefficients &amp; link function: <a href="./examples/initials.mat">'./examples/initials.mat'</a></li>
+<li><strong>images &amp; masks</strong>: '/examples/TCGA_flair_single_slice'</li>
+<li><strong>covariates of interest:</strong> 'examples/TCGA_GBM_covariates.csv'</li>
+<li><strong>initial values</strong> for the functional coefficients &amp; link function: 'examples/initials.mat'</li>
 </ol>
 <h3 id="--output">- Output</h3>
 <ul>
-<li>saved in the matlab file <a href="./examples/results.mat">&quot;./examples/results.mat&quot;</a></li>
+<li>saved in the matlab file &quot;/examples/results.mat&quot;</li>
 </ul>
 <h2 id="visualization-of-the-result">Visualization of the Result</h2>
-<p><img src="file:///d:\OneDrive - Florida State University\PhD\ELFR\REVISION_v2\code\finalversion_github\Software_DSQRM\interface_example.png" alt="GUI"><br>
+<p><img src="file:///d:\OneDrive - Florida State University\PhD\ELFR\REVISION_v2\code\DSQRM_Package_V1.0\Software_DSQRM\interface10.png" alt="GUI"><br>
 Fig 3. An example of the analysis on GBM dataset using the software.</p>
 
             <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>

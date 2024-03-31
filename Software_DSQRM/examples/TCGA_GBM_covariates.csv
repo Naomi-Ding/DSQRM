@@ -1,4 +1,4 @@
-SampleName,age_at_index,gender,survivalLength
+SampleName,age,gender,survivalLength
 TCGA-12-0776,52,1,296
 TCGA-06-1802,61,1,466
 TCGA-06-0177,64,1,127
