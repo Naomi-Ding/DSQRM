@@ -18,9 +18,9 @@ Fig 1. The workflow of our proposed association analysis framework.
   - **[./DSQRM_Installer_web.exe](./Software_DSQRM/DSQRM_Installer_web.exe)**: the installation file for the software "DSQRM"
     - require MATLAB Runtime, which will automatically download during the installation 
   - **[./DSQRM_V1.mlapp](./Software_DSQRM/DSQRM_V1.mlapp):** the source code for the software.
+  - **[./for_redistribution_files_only/](./Software_DSQRM/for_redistribution_files_only/):** contains the executable file on Windows
   - **[./README_DSQRM_software.md](./Software_DSQRM/README_DSQRM_software.md):** the specific usage of the software
   - **[./software_guide.pdf](./Software_DSQRM/software_guide.pdf):** an example of step-by-step usage.
-  - **[./for_redistribution_files_only/](./Software_DSQRM/for_redistribution_files_only/):** contains the installed software on Windows
   - **[./examples/](./Software_DSQRM/examples/)**: contains the dataset and results for GBM study
 
 

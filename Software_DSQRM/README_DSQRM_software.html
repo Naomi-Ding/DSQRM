@@ -140,16 +140,7 @@
         </head>
         <body class="vscode-body vscode-light">
             <h1 id="dsqrm-distribution-on-scalar-single-index-quantile-regression-model-for-handling-tumor-heterogeneity">DSQRM: Distribution-on-scalar Single-index Quantile Regression Model for Handling Tumor Heterogeneity</h1>
-<h1 id="introduction">Introduction</h1>
-<h2 id="abstract">Abstract</h2>
-<p><strong>This paper develops a distribution-on-scalar single-index quantile regression modeling framework to investigate the relationship between cancer imaging responses and scalar covariates of interest while tackling tumor heterogeneity. Conventional association analysis methods typically assume that the imaging responses are well-aligned after some preprocessing steps. However, this assumption is often violated in practice due to imaging heterogeneity. Although some distribution-based approaches are developed to deal with this heterogeneity, major challenges have been posted due to the nonlinear subspace formed by the distributional responses, the unknown nonlinear association structure, and the lack of statistical inference. Our method can successfully address all the challenges. We establish both estimation and inference procedures for the unknown functions in our model. The asymptotic properties of both estimation and inference procedures are systematically investigated. The finite-sample performance of our proposed method is assessed by using both Monte Carlo simulations and a real data example on brain cancer images from TCIA-GBM collection.</strong></p>
-<h2 id="framework">Framework</h2>
-<details>
-  <summary> Workflow </summary>
-  ![Framework](/workflow.png)
-<p>Fig 1. The workflow of our proposed association analysis framework.</p>
-</details>
-<h2 id="software-interface">Software Interface</h2>
+<h1 id="software-interface">Software Interface</h1>
 <p><img src="file:///d:\OneDrive - Florida State University\PhD\ELFR\REVISION_v2\code\DSQRM_Package_V1.0\Software_DSQRM\interface0.png" alt="GUI"><br>
 Fig 2. The interface of the software.</p>
 <h1 id="software-usage">Software Usage</h1>
@@ -165,7 +156,7 @@ Fig 2. The interface of the software.</p>
 <li><strong>p0</strong>: the number of covariates</li>
 </ul>
 </li>
-<li><strong>.csv file:</strong> the first column is the sample name, and the rest columns are the variables treated as the covariates of interests. \<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>the continuous variables need to be normalized before being loaded.</p>
+<li><strong>.csv file:</strong> the first column is the sample name, and the rest columns are the variables treated as the covariates of interests.<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>the continuous variables need to be normalized before being loaded.</p>
 </div>
 </li>
 </ul>

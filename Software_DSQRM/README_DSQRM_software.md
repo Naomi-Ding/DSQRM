@@ -1,19 +1,6 @@
 # DSQRM: Distribution-on-scalar Single-index Quantile Regression Model for Handling Tumor Heterogeneity
 
-# Introduction
-## Abstract
-**This paper develops a distribution-on-scalar single-index quantile regression modeling framework to investigate the relationship between cancer imaging responses and scalar covariates of interest while tackling tumor heterogeneity. Conventional association analysis methods typically assume that the imaging responses are well-aligned after some preprocessing steps. However, this assumption is often violated in practice due to imaging heterogeneity. Although some distribution-based approaches are developed to deal with this heterogeneity, major challenges have been posted due to the nonlinear subspace formed by the distributional responses, the unknown nonlinear association structure, and the lack of statistical inference. Our method can successfully address all the challenges. We establish both estimation and inference procedures for the unknown functions in our model. The asymptotic properties of both estimation and inference procedures are systematically investigated. The finite-sample performance of our proposed method is assessed by using both Monte Carlo simulations and a real data example on brain cancer images from TCIA-GBM collection.**
-
-## Framework
-<details>
-  <summary> Workflow </summary>
-  ![Framework](/workflow.png)
-  
-  Fig 1. The workflow of our proposed association analysis framework.
-</details>
-
-
-## Software Interface
+# Software Interface
 ![GUI](interface0.png)\
 Fig 2. The interface of the software. 
 
@@ -26,7 +13,7 @@ Fig 2. The interface of the software.
 - **.mat file:** containing a variable named "xdesign", which is a table of size (n, p0), with the first column as the sample name, and the column names as the variable names;
   - **n**: sample size 
   - **p0**: the number of covariates
-- **.csv file:** the first column is the sample name, and the rest columns are the variables treated as the covariates of interests. \
+- **.csv file:** the first column is the sample name, and the rest columns are the variables treated as the covariates of interests.
   > [!NOTE] 
   > the continuous variables need to be normalized before being loaded.
 
