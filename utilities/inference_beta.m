@@ -42,7 +42,11 @@ C = ones(1,p); c = zeros(1,m);
 Cp_b = zeros(p,R);
 Cr_b = zeros(R,1);
 all_zeta = randn(n,R);
+
 for r = 1:R
+    % if mod(r, 100) == 0
+    %     fprintf('\rSCB of beta(s), Bootstrap: %3.0f%%\n', 100 * r / R);
+    % end
     zeta = all_zeta(:,r);
     G = zeros(p,m);
     X = zeros(m,1);

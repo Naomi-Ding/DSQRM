@@ -36,7 +36,7 @@ parfor nn = 1:nsimu
     dg0 = dg(x*beta0);
     
     [fhat, f_support, hf, ally, betaest, gest, dgest, gest_inv] = ...
-        DSQRM(x, v, m, tau_set, hx, hy, h, [], beta0, g0, dg0, false);
+        DSQRM(x, v, m, tau_set, hx, hy, h, [], beta0, g0, dg0, false, 0);
     all_fhat(:,:,nn) = fhat;
     all_fsupp(:,:,nn) = f_support;
     all_hf(nn,:) = hf;
@@ -87,6 +87,7 @@ if SIVC
     all_gest_SIVC = zeros(n,m,nsimu);
     all_gest_inv_SIVC = zeros(n,m,nsimu);
     parfor nn = 1:nsimu
+        disp(compose("nn = %d\n", nn));
         x = simu_x(:,:,nn);
         ally = simu_ally(:,:,nn);
         [betaest, gest] = get_SIVC_estimate(x, ally, t, hx, hy, h, beta0);

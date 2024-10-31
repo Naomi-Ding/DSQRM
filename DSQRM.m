@@ -29,13 +29,17 @@
 
 function [fhat, f_support, hf, ally, all_betaest, all_gest, all_dgest, all_gest_inv, ...
     all_Cb_beta, all_Cr_beta, all_Cb_g, all_pvals] = DSQRM(x, v, m, tau_set, ...
-    hx, hy, h, h1, beta0, g0, dg0, smooth, SCB, Hypo_idx, R, a, h2, h3)
+    hx, hy, h, h1, beta0, g0, dg0, smooth, verbose, SCB, Hypo_idx, R, a, h2, h3)
 % addpath('./utilities')
 [n,p] = size(x);
-
+if ~exist('verbose', 'var')
+    verbose = 0;
+end
+tic;
 %% Step 1. Density Estimation & Obtain LQD
 disp("Step 1. Extract density estimators & LQD representations");
 [ally, t, hf, fhat, f_support] = get_lqd_representation(v, m);
+toc;
 
 rho = std(x(:));
 if ~exist('hx', "var") || isempty(hx)
@@ -95,9 +99,9 @@ for idx = 1:ntau
     tau = tau_set(idx);
     disp(compose("tau = %.1f\n", tau));
     if ~exist('h1', "var") || isempty(h1)
-        [betaest, gest, dgest, h1] = get_estimate(x, ally, t, tau, hx, hy, h, beta0, g0, dg0, smooth);
+        [betaest, gest, dgest, h1] = get_estimate(x, ally, t, tau, hx, hy, h, beta0, g0, dg0, smooth, verbose);
     else
-        [betaest, gest, dgest, h1] = get_estimate(x, ally, t, tau, hx, hy, h, beta0, g0, dg0, smooth, h1);
+        [betaest, gest, dgest, h1] = get_estimate(x, ally, t, tau, hx, hy, h, beta0, g0, dg0, smooth, verbose, h1);
     end
     % Get the inverse of estimated link
     gest_inv = MakeDENsample(gest);
@@ -106,6 +110,7 @@ for idx = 1:ntau
     all_dgest(:,:,idx) = dgest;
     all_h1(idx) = h1;
     all_gest_inv(:,:,idx) = gest_inv;
+    toc;
 end
 
 if ~exist('SCB', "var")
@@ -126,14 +131,15 @@ if SCB || Hypo_idx
     if ~exist('h3', 'var') || isempty(h3)
         h3 = 0.6455;
     end
-
-    if SCB 
+    
+    if SCB
         %% Step 3. Confidence Bands for the functional coefficients & link function
         disp("Step 3. Confidence Bands for the functional coefficients & link function");
         all_Cb_beta = zeros(p, ntau);
         all_Cr_beta = zeros(1, ntau);
         all_Cb_g = zeros(1, ntau);
         for idx = 1:ntau
+            disp(compose("SCB for tau = %.1f\n", tau));
             tau = tau_set(idx);
             ystar = ally - all_gest(:,:,idx);
             if ~exist('h2', "var") || isempty(h2)
@@ -147,10 +153,11 @@ if SCB || Hypo_idx
             Cb_g = inference_g(x, ally, all_betaest(:,:,idx), all_gest(:,:,idx),...
                 all_dgest(:,:,idx), tau, all_h1(idx), R, a);
             all_Cb_g(idx) = Cb_g;
+            toc;
         end
-    end 
-
-    if Hypo_idx 
+    end
+    
+    if Hypo_idx
         %% Step 4. Hypothesis Testing on beta(s)
         disp("Step 4. Hypothesis Testing on beta(s)");
         C = zeros(1,m); C(Hypo_idx) = 1; % test the significance of the covariate with idx
@@ -171,8 +178,9 @@ if SCB || Hypo_idx
                 h2, h3, C, c, R);
             all_pvals(idx) = pval;
         end
+        toc;
     end
-
+    
 end
 
 

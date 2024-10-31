@@ -1,12 +1,15 @@
 %% Estimation for Distribution-on-scalar-Single-index-Quantile-Regression-Model
 
 function [betaest, gest, dgest, h1] = get_estimate(x, ally, t, tau, ...
-    hx, hy, h, beta0, g0, dg0, smooth, varargin)
+    hx, hy, h, beta0, g0, dg0, smooth, verbose, varargin)
 [n,p] = size(x);
 m = size(ally, 2);
 
 if ~exist('smooth', 'var')
     smooth = false;
+end
+if ~exist('verbose', 'var')
+    verbose = false;
 end
 
 %% Step 1. Estimate Beta %%
@@ -15,7 +18,15 @@ options = optimset('MaxFunEvals',100, 'MaxIter',100, 'Display', 'none');
 g_method = 'fminsearch';
 % disp("Estimate beta(s)")
 betaest = zeros(p,m);
+tic;
 for s= 1:m
+    % if verbose
+    %     waitbar(s / m, hbar, sprintf('Estimating grid %d of %d', i, m));
+    % end
+    if verbose && (mod(s, 10) == 0)
+        fprintf('\rEstimating beta(s): %3.0f%%\n', 100 * s / m);
+        toc;
+    end
     % if mod(s, 10) == 0
     %     disp(compose("s = %d\n", s));
     % end
@@ -51,6 +62,10 @@ else
 end
 % (2) Estimate g(X.T*Beta(s))
 for i = 1:n % for object i
+    if verbose && (mod(i, 10) == 0)
+        fprintf('\rEstimating g(xi^T*beta(s)): %3.0f%%\n', 100 * i / n);
+        toc;
+    end
     for s = 1:m % at grid s
         xb0 = x(i,:) * betaest(:,s); % xi.T * beta(sm), scalar
         xb = allxb(:); % (n*m,1) vector

@@ -5,9 +5,13 @@
 **This paper develops a distribution-on-scalar single-index quantile regression modeling framework to investigate the relationship between cancer imaging responses and scalar covariates of interest while tackling tumor heterogeneity. Conventional association analysis methods typically assume that the imaging responses are well-aligned after some preprocessing steps. However, this assumption is often violated in practice due to imaging heterogeneity. Although some distribution-based approaches are developed to deal with this heterogeneity, major challenges have been posted due to the nonlinear subspace formed by the distributional responses, the unknown nonlinear association structure, and the lack of statistical inference. Our method can successfully address all the challenges. We establish both estimation and inference procedures for the unknown functions in our model. The asymptotic properties of both estimation and inference procedures are systematically investigated. The finite-sample performance of our proposed method is assessed by using both Monte Carlo simulations and a real data example on brain cancer images from TCIA-GBM collection.**
 
 ## Framework
-![Framework](workflow.png)
-Fig 1. The workflow of our proposed association analysis framework.
+<details>
+  <summary> Workflow </summary>
+  <img src="workflow.png" alt="Framework"  width="1000px"/>
+  <figcaption>Fig 1. The workflow of our proposed association analysis framework.</figcaption>
+</details>
 
+<br> <!-- Adds two line breaks -->
 # Folder Structure
 - **[./utilities/](./utilities/):** 
 	contains all the user-defined functions
@@ -23,7 +27,25 @@ Fig 1. The workflow of our proposed association analysis framework.
   - **[./software_guide.pdf](./Software_DSQRM/software_guide.pdf):** an example of step-by-step usage.
   - **[./examples/](./Software_DSQRM/examples/)**: contains the dataset and results for GBM study
 
+<br>
 
+# Main Results Replication
+## [figure3.m](figure3.m): estimators & 95% SCB for a simulated dataset
+- **Settings**: n = 200; p = 2; N = 1000; m = 100; $\tau$ = 0.5;
+- Expected running time: ~ 45 mins on ``Intel(R) Core(TM) i7-8700 CPU``
+
+
+## [figure4.m](figure4.m): estimators & 95% SCB for the GBM dataset
+- n = 101; p = 5; m = 100; $\tau$ = 0.5 
+- Expected running time: ~ 30 mins on ``Intel(R) Core(TM) i7-8700 CPU``
+
+
+## [table2_part1_median.m](table2_part1_median.m): estimation performance from simulated datasets
+> Given that it's time-consuming to average the estimation performance over 200 simulated datasets, here we only replicate part of table 2, i.e., the first setting with $\tau=0.5$. 
+- **Settings**: n = 100; p = 2; N = 500; m = 100; $\tau=0.5$; nsimu=200 (# of simulated datasets)
+- Expected running time: ~ 8 hrs using a parallel pool with 6 workers on ``Intel(R) Core(TM) i7-8700 CPU``
+
+<br>
 
 # Code Description
 ## [DSQRM.m](DSQRM.m)
