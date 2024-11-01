@@ -37,9 +37,11 @@ if ~exist('verbose', 'var')
 end
 tic;
 %% Step 1. Density Estimation & Obtain LQD
-disp("Step 1. Extract density estimators & LQD representations");
+if verbose
+    disp("Step 1. Extract density estimators & LQD representations");
+end
 [ally, t, hf, fhat, f_support] = get_lqd_representation(v, m);
-toc;
+% toc;
 
 rho = std(x(:));
 if ~exist('hx', "var") || isempty(hx)
@@ -88,7 +90,9 @@ end
 
 
 %% Step 2. Get the estimators of our method
-disp("Step 2. Estimate the functional coefficients & link function");
+if verbose
+    disp("Step 2. Estimate the functional coefficients & link function");
+end
 ntau = length(tau_set);
 all_betaest = zeros(p,m,ntau);
 all_gest = zeros(n,m,ntau);
@@ -97,7 +101,8 @@ all_gest_inv = zeros(n, m, ntau);
 all_h1 = zeros(1, ntau);
 for idx = 1:ntau
     tau = tau_set(idx);
-    disp(compose("tau = %.1f\n", tau));
+    % disp(compose("tau = %.1f\n", tau));
+    fprintf("tau = %.1f\n", tau);
     if ~exist('h1', "var") || isempty(h1)
         [betaest, gest, dgest, h1] = get_estimate(x, ally, t, tau, hx, hy, h, beta0, g0, dg0, smooth, verbose);
     else
@@ -134,12 +139,15 @@ if SCB || Hypo_idx
     
     if SCB
         %% Step 3. Confidence Bands for the functional coefficients & link function
-        disp("Step 3. Confidence Bands for the functional coefficients & link function");
+        if verbose
+            disp("Step 3. Confidence Bands for the functional coefficients & link function");
+        end
         all_Cb_beta = zeros(p, ntau);
         all_Cr_beta = zeros(1, ntau);
         all_Cb_g = zeros(1, ntau);
         for idx = 1:ntau
-            disp(compose("SCB for tau = %.1f\n", tau));
+            % disp(compose("SCB for tau = %.1f\n", tau));
+            fprintf("SCB for tau = %.1f\n", tau);
             tau = tau_set(idx);
             ystar = ally - all_gest(:,:,idx);
             if ~exist('h2', "var") || isempty(h2)
@@ -159,7 +167,9 @@ if SCB || Hypo_idx
     
     if Hypo_idx
         %% Step 4. Hypothesis Testing on beta(s)
-        disp("Step 4. Hypothesis Testing on beta(s)");
+        if verbose
+            disp("Step 4. Hypothesis Testing on beta(s)");
+        end
         C = zeros(1,m); C(Hypo_idx) = 1; % test the significance of the covariate with idx
         r = size(C, 1);
         if ~exist('c', "var") || isempty(c)

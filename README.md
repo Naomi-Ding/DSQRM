@@ -11,7 +11,8 @@
   <figcaption>Fig 1. The workflow of our proposed association analysis framework.</figcaption>
 </details>
 
-<br> <!-- Adds two line breaks -->
+<br>
+
 # Folder Structure
 - **[./utilities/](./utilities/):** 
 	contains all the user-defined functions
@@ -32,18 +33,18 @@
 # Main Results Replication
 ## [figure3.m](figure3.m): estimators & 95% SCB for a simulated dataset
 - **Settings**: n = 200; p = 2; N = 1000; m = 100; $\tau$ = 0.5;
-- Expected running time: ~ 45 mins on ``Intel(R) Core(TM) i7-8700 CPU``
+- Expected running time: ~ 30 mins on ``Intel(R) Core(TM) i7-8700 CPU``
 
 
 ## [figure4.m](figure4.m): estimators & 95% SCB for the GBM dataset
 - n = 101; p = 5; m = 100; $\tau$ = 0.5 
-- Expected running time: ~ 30 mins on ``Intel(R) Core(TM) i7-8700 CPU``
+- Expected running time: ~ 20 mins on ``Intel(R) Core(TM) i7-8700 CPU``
 
 
 ## [table2_part1_median.m](table2_part1_median.m): estimation performance from simulated datasets
 > Given that it's time-consuming to average the estimation performance over 200 simulated datasets, here we only replicate part of table 2, i.e., the first setting with $\tau=0.5$. 
 - **Settings**: n = 100; p = 2; N = 500; m = 100; $\tau=0.5$; nsimu=200 (# of simulated datasets)
-- Expected running time: ~ 8 hrs using a parallel pool with 6 workers on ``Intel(R) Core(TM) i7-8700 CPU``
+- Expected running time: ~ 10 hrs using a parallel pool with 6 workers on ``Intel(R) Core(TM) i7-8700 CPU``
 
 <br>
 
