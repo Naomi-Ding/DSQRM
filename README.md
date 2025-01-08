@@ -1,4 +1,6 @@
 # DSQRM: Distribution-on-scalar Single-index Quantile Regression Model for Handling Tumor Heterogeneity
+## Reference
+[Zhou, X., Ding, S., Wang, J., Liu, R., Kong, L., & Huang, C. (2024). Distribution-on-scalar Single-index Quantile Regression Model for Handling Tumor Heterogeneity. Technometrics, 1-17.](https://www.tandfonline.com/doi/full/10.1080/00401706.2024.2441686)
 
 # Introduction
 ## Abstract
