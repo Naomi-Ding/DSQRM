@@ -30,6 +30,8 @@ data <- readMat(data_file)
 ISE_f <- data$ISE.f
 simu.x <- data$simu.x
 simu.ally <- data$simu.ally
+tmp_f <- colMeans((data$all.fhat - data$truef)^2, dims = 2)
+ISE_f <- c(mean(tmp_f), std(tmp_f))
 
 ## Estimation
 betaest <- array(dim = c(p, m, nsimu))
@@ -71,8 +73,17 @@ T_PWSI <- c(
   n, N, ISE_f, m, "PWSI", ISE_beta_PWSI[1, ], ISE_beta_PWSI[2, ],
   ISE_g_PWSI, ISE_g_inv_PWSI
 )
-write.table(t(T_PWSI),
-  file = "simu_estimation_error.csv",
+tmp_t <- data.frame(t(T_PWSI))
+varnames <- c(
+  "n", "N", "ISE_f_mean", "ISE_f_std", "m", "tau", "ISE_beta1_mean",
+  "ISE_beta1_std", "ISE_beta2_mean", "ISE_beta2_std", "ISE_g_mean", "ISE_g_std",
+  "ISE_Psi^{-1}(g)_mean", "ISE_Psi^{-1}(g)_std"
+)
+colnames(tmp_t) <- varnames
+print(tmp_t)
+
+write.table(tmp_t,
+  file = "simu_results/simu_estimation_error.csv",
   append = TRUE, row.names = FALSE, col.names = FALSE,
   sep = ",", qmethod = "double"
 )

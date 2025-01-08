@@ -41,39 +41,37 @@
 - Expected running time: ~ 20 mins on ``Intel(R) Core(TM) i7-8700 CPU``
 
 
-## [table2_part1_median.m](table2_part1_median.m): estimation performance from simulated datasets
-> Given that it's time-consuming to average the estimation performance over 200 simulated datasets, here we only replicate part of table 2, i.e., the first setting with $\tau=0.5$. 
-- **Settings**: n = 100; p = 2; N = 500; m = 100; $\tau=0.5$; nsimu=200 (# of simulated datasets)
-- Expected running time: ~ 10 hrs using a parallel pool with 6 workers on ``Intel(R) Core(TM) i7-8700 CPU``
+## [table2.m](table2.m): estimation performance from simulated datasets
+**Settings**: p = 2; N = 500;  nsimu=200 (# of simulated datasets);
+> Given that it's time-consuming to average the estimation performance over 200 simulated datasets, here we separate Table 2 into three parts, corresponding to the three different combinations of sample size n and number of grids m.
+> - part 1: n = 100; m = 100;
+> - part 2: n = 100; m = 200;
+> - part 3: n = 200; m = 100;
+> 1. After each part, the procedure will pause and the estimation results will be displayed in the command window, i.e., the MATLAB console; 
+> 2. press "Enter" to continue running the following part;  
+
+- **tau_set**: targeted quantile level(s), take values from (0.1, 0.3, 0.5, 0.7, 0.9) - In each part, it's set to run the proposed method with $\tau=0.5$. 
+- **Expected running time** with ``tau_set=0.5``: ~ 10 hrs using a parallel pool with 6 workers on ``Intel(R) Core(TM) i7-8700 CPU``
+- **Note:** to obtain results for all the quantile levels, i.e., ``tau_set=(0.1, 0.3, 0.5, 0.7, 0.9)``, please uncommment line 13, 24, 35 respectively for each part
+- **``SIVC = true``: compare with SIVC (2016) on the generated dataset**
+- See the details in [simu_main.m](simu_main.m). 
+- **To compare with PWSI:**  run the following command after running "table2.m"
+	```r
+	# part 1: n=100, p=2, m=100, N=500, nsimu=200
+	Rscript simu_PWSI.R 100 2 100 500 200
+	# part 2: n=100, p=2, m=200, N=500, nsimu=200
+	Rscript simu_PWSI.R 100 2 200 500 200
+	# part 3: n=200, p=2, m=100, N=500, nsimu=200
+	Rscript simu_PWSI.R 200 2 100 500 200
+	```
+#### Output: [./simu_results/simu_estimation_error.csv](./simu_results/simu_estimation_error.csv)
+> **a table of the following 14 columns:** "n", "N", "ISE_f_mean", "ISE_f_std", "m", "tau", "ISE_beta1_mean", "ISE_beta1_std", "ISE_beta2_mean", "ISE_beta2_std", "ISE_g_mean", "ISE_g_std", "ISE_Psi^{-1}(g)_mean", "ISE_Psi^{-1}(g)_std"
+
+
 
 <br>
 
 # Code Description
-## [DSQRM.m](DSQRM.m)
-> **the main function of the workflow shown in Fig 1.**
-### Input:
-- x: A set of covariates of interest
-- v: Brain tumor images with pixel intensities
-- m: The number of grids for the measurement of density estimators extracted from the images
-- tau_set: a set of targeted quantile levels
-- <mark>For other optional arguments</mark>, see the details in [DSQRM.m](DSQRM.m)
-### Output:
-- fhat: estimated denstiies, (n, N)
-- f_support: support of estimated densities, (n, N)
-- hf: bandwidth for density estimators, (1, n)
-- ally: LQD representation of fhat, (n, m)
-- all_betaest: estimated functional coefficients at targeted quantile levels, (p,m,ntau)
-- all_gest: estimated link function at target quantile levels, (n,m,ntau)
-- all_dgest: estimated first derivative of the link function at target quantile levels, (n,m,ntau)
-- all_gest_inv: the inversed transformation of estimated gest, (n,m,ntau)
-
-- **Optional:**
-	- all_Cb_beta: simultaneous confidence bands for estimated coefficients beta_l(s), l=1,...,p; (p,ntau)
-	- all_Cr_beta: simultaneous confidence region for estimated coefficient functions beta(s), (1, ntau)
-	- all_Cb_g: simultaneous confidence band for estimated link function gest(\cdot), (1, ntau)
-	- all_pvals: p-values of the hypothesis testing procedures at the targeted quantile levels, (1, ntau)
-
-
 ## [simu_main.m](simu_main.m)
 > **the function for calculating the estimation errors from simulated datasets measured by the mean and standard deviation (std) of ISE.**
 ### (1) Settings
@@ -99,17 +97,44 @@
 > **Settings: n=100, p=2, m=100, N=500, nsimu=200, tau_set= (0.1, 0.3, 0.5, 0.7, 0.9).**
 #### (i) Our method & SIVC (2016)
 **Run the command through MATLAB command prompt**
-```ruby
+```matlab
 [T_all, all_betaest, all_gest, all_dgest, all_gest_inv, ...
 	all_betaest_SIVC, all_gest_SIVC, all_gest_inv_SIVC] = ...
 	simu_main(100, 2, 100, 500, 200, 0.1:0.3:0.9, true);
 ```
 #### (ii) Point-wise Single-index (PWSI) method
 **Run the R script "simu_PWSI.R" using the command line:**
-```
+```r
 Rscript simu_PWSI.R 100 2 100 500 200
 ```
 
+
+
+<br>
+
+## [DSQRM.m](DSQRM.m)
+> **the main function of the workflow shown in Fig 1.**
+### Input:
+- x: A set of covariates of interest
+- v: Brain tumor images with pixel intensities
+- m: The number of grids for the measurement of density estimators extracted from the images
+- tau_set: a set of targeted quantile levels
+- <mark>For other optional arguments</mark>, see the details in [DSQRM.m](DSQRM.m)
+### Output:
+- fhat: estimated denstiies, (n, N)
+- f_support: support of estimated densities, (n, N)
+- hf: bandwidth for density estimators, (1, n)
+- ally: LQD representation of fhat, (n, m)
+- all_betaest: estimated functional coefficients at targeted quantile levels, (p,m,ntau)
+- all_gest: estimated link function at target quantile levels, (n,m,ntau)
+- all_dgest: estimated first derivative of the link function at target quantile levels, (n,m,ntau)
+- all_gest_inv: the inversed transformation of estimated gest, (n,m,ntau)
+
+- **Optional:**
+	- all_Cb_beta: simultaneous confidence bands for estimated coefficients beta_l(s), l=1,...,p; (p,ntau)
+	- all_Cr_beta: simultaneous confidence region for estimated coefficient functions beta(s), (1, ntau)
+	- all_Cb_g: simultaneous confidence band for estimated link function gest(\cdot), (1, ntau)
+	- all_pvals: p-values of the hypothesis testing procedures at the targeted quantile levels, (1, ntau)
 
 
 
