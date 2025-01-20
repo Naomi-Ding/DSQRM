@@ -263,10 +263,11 @@ user can choose if to display the SCB together with the estimators by checking t
 - idx: denotes to conduct the hypothesis test on which covariate
 - p-value: the corresponding p-value after the bootstrap procedures
 
-
-# An Example of GBM Study
-## Folder Structure
-> **examples/**: this folder contains both input files and output results of this example. 
+<br>
+	
+## An Example of GBM Study
+### Folder Structure
+> **./Software_DSQRM/examples/**: this folder contains both input files and output results of this example. 
 
 ### - Input
   1. **images & masks**: ['./examples/TCGA_flair_single_slice'](./Software_DSQRM/examples/TCGA_flair_single_slice/)
@@ -276,9 +277,7 @@ user can choose if to display the SCB together with the estimators by checking t
   - saved in the matlab file ["./examples/results.mat"](./Software_DSQRM/examples/results.mat)
    
 
-
-
-## Visualization of the Result
+### Visualization of the Result
 ![GUI](./Software_DSQRM/interface10.png)\
 Fig 3. An example of the analysis on GBM dataset using the software.
 
